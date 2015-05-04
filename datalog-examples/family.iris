@@ -1,3 +1,6 @@
+// A simple Datalog program that captures family relations.
+// You can extend your facts and try to define other family relations like uncle, son, husband, wife, mother-in-law etc.
+
 // facts
 parent('pam', 'bob').
 parent('tom', 'bob').
@@ -7,6 +10,7 @@ parent('bob', 'pat').
 parent('pat', 'jim').
 parent('alex', 'tom').
 parent('mary', 'pam').
+parent('pam', 'liz').
 
 female('pam').
 female('liz').
@@ -18,21 +22,68 @@ male('bob').
 male('jim').
 male('alex').
 
-//rules
-mother(?x, ?y) :- parent(?x, ?y), female(?y).
-father(?x, ?y) :- parent(?x, ?y), male(?y).
-grandparent(?x, ?z) :- parent(?x, ?y), parent(?y, ?z).
-sister(?x, ?y) :- parent(?x, ?z), parent(?y, ?z), female(?y), ?x != ?y.
-aunt(?x, ?y) :- parent(?x, ?z), sister(?z, ?y).
-sibling(?x, ?y) :- parent(?x, ?z), parent(?y, ?z), ?x != ?y.
-cousin(?x, ?y) :- parent(?x, ?xp), parent(?y, ?yp), sibling(?xp, ?yp).
-cousin(?x, ?y) :- parent(?x, ?xp), parent(?y, ?yp), cousin(?xp, ?yp).
+// rules
+mother(?x, ?y) :-
+                parent(?x, ?y),
+                female(?y).
+
+father(?x, ?y) :-
+                parent(?x, ?y),
+                male(?y).
+
+grandparent(?x, ?z) :-
+                parent(?x, ?y),
+                parent(?y, ?z).
+
+sister(?x, ?y) :-
+                parent(?x, ?z),
+                parent(?y, ?z),
+                female(?y),
+                ?x != ?y.
+
+aunt(?x, ?y) :-
+                parent(?x, ?z),
+                sister(?z, ?y).
+
+daughter(?x, ?y) :-
+                parent(?x, ?y),
+                female(?x).
+
+sibling(?x, ?y) :-
+                parent(?x, ?z),
+                parent(?y, ?z),
+                ?x != ?y. // preserves that siblings are different persons
+
+full_siblings(?x, ?y) :-      // full siblings have common parents (both)
+                    father(?x, ?f),
+                    father(?y, ?f),
+                    mother(?x, ?m),
+                    mother(?y, ?m),
+                    ?x != ?y.
+
+cousin(?x, ?y) :-
+                parent(?x, ?xp),
+                parent(?y, ?yp),
+                sibling(?xp, ?yp).
+
+cousin(?x, ?y) :-
+                parent(?x, ?xp),
+                parent(?y, ?yp),
+                cousin(?xp, ?yp).
+
 predecessor(?x, ?z) :- parent(?x, ?z).
-predecessor(?x, ?z) :- parent(?x, ?y), predecessor(?y, ?z).
+predecessor(?x, ?z) :-
+                    parent(?x, ?y),
+                    predecessor(?y, ?z).
 
-//queries
-// ?- cousin(?x, ?y).
+single_child(?x) :- parent(?x, ?y),
+                    ! sibling(?x, ?z).
 
+// queries
+?- mother(?x, ?y).
+?- mother('pam', ?y).
+?- father(?x, 'bob').
+?- cousin(?x, ?y).
 ?- parent(?y, 'jim'), parent(?x, ?y).
-//('pat', 'bob')
+?- predecessor(?x, ?z).
 
