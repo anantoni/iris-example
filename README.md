@@ -39,7 +39,9 @@ IrisExample/
   
   In this case the invocation of your Java program would be:
   
-        `java -cp $(CLASSPATH) iris.Main generated-facts/Factorial analysis-logic queries`
+        ```
+        java -cp $(CLASSPATH) iris.Main generated-facts/Factorial analysis-logic queries
+        ```
   
                                  
                                  
