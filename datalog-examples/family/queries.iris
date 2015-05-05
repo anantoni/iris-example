@@ -6,4 +6,3 @@
 ?- predecessor(?x, ?y).
 
 ?- singleChild(?x).
-

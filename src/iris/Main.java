@@ -91,15 +91,12 @@ public class Main {
             IRelation relation = knowledgeBase.execute(query, variableBindings);
 
             // Output the variables.
-            System.out.println(variableBindings);
-
-            // For performance reasons compute the relation size only once.
-            int relationSize = relation.size();
+            System.out.println(query.toString() + "\n" + variableBindings);
 
             // Output each tuple in the relation, where the term at position i
             // corresponds to the variable at position i in the variable
             // bindings list.
-            for (int i = 0; i < relationSize; i++) {
+            for (int i = 0; i < relation.size(); i++) {
                 System.out.println(relation.get(i));
             }
         }

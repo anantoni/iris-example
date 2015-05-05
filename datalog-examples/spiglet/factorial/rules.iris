@@ -1,0 +1,9 @@
+cJumpInstruction(?m, ?i) :- next(?m, ?i, ?j), 
+                            next(?m, ?i, ?k), 
+                            ?i+1 = ?k,
+                            ?j != ?k.
+                            
+jumpInstruction(?m, ?i) :- next(?m, ?i, ?j),
+                           ?i+1 = ?k,
+                           ?j != ?k,
+                           !next(?m, ?i, ?k).

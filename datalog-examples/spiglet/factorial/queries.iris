@@ -1,0 +1,3 @@
+?- cJumpInstruction(?m, ?i).
+
+?- jumpInstruction(?m, ?i).
