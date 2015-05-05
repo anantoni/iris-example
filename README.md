@@ -11,7 +11,7 @@ You should be able to perform your analysis for project 4 by doing only minor mo
 The next step will be to create and fill the knowledge base for the analyzed program as our example shows and then perform your analyses by executing the rules for each analysis (again, you could have one rule file for each analysis and add more parameters to your program in order to perform a specific analysis on the datalog project you want).
 
 A good structure you could use is the following, which requires minor modifications to the code we provide you:
-
+```
 IrisExample/
         generated-facts/Factorial/instruction.iris
                                  /next.iris
@@ -29,7 +29,7 @@ IrisExample/
         queries/queries.iris (one query file with all the queries which will demonstrate your analyses results)
         src/iris/Main.java
                 /Main.class
-                
+  ```              
   In such a scenario you would need to be able to handle three command-line arguments. The first, would be the path
   to the facts directory, the second the path to the rules directory and the third the path the queries directory.
   
