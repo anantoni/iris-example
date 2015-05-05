@@ -1,0 +1,5 @@
+male('nick').
+male('tom').
+male('bob').
+male('jim').
+male('alex').

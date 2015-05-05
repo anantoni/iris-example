@@ -1,0 +1,13 @@
+// facts
+parent('pam', 'bob').
+parent('tom', 'bob').
+parent('tom', 'liz').
+parent('bob', 'nick').
+parent('bob', 'pat').
+parent('pat', 'jim').
+parent('alex', 'tom').
+parent('mary', 'pam').
+
+
+
+

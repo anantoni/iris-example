@@ -1,0 +1,4 @@
+female('pam').
+female('liz').
+female('pat').
+female('mary').

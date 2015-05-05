@@ -1,0 +1,7 @@
+node('A').
+node('B').
+node('C').
+node('D').
+node('E').
+node('F').
+node('G').
