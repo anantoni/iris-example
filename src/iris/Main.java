@@ -91,7 +91,7 @@ public class Main {
             IRelation relation = knowledgeBase.execute(query, variableBindings);
 
             // Output the variables.
-            System.out.println(query.toString() + "\n" + variableBindings);
+            System.out.println("\n" + query.toString() + "\n" + variableBindings);
 
             // Output each tuple in the relation, where the term at position i
             // corresponds to the variable at position i in the variable
