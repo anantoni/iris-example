@@ -9,7 +9,7 @@ all: compile
 compile: $(classes)
 
 clean :
-	rm -f *.class
+	rm -f $(classes)
 
 %.class : %.java
 	$(JAVAC) -cp $(CLASSPATH) $<
