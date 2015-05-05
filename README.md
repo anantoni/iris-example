@@ -38,10 +38,8 @@ IrisExample/
   queries on the resulting knowledge base.
   
   In this case the invocation of your Java program would be:
-  
-        ```
+
         java -cp $(CLASSPATH) iris.Main generated-facts/Factorial analysis-logic queries
-        ```
-  
+
                                  
                                  
