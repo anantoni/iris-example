@@ -1,0 +1,36 @@
+group 'anantoni'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'iris.Main'
+sourceCompatibility = 1.7
+
+run {
+      standardInput = System.in
+      if (project.hasProperty('args')) {
+        args project.property('args').split()
+      }
+}
+
+task wrapper(type: Wrapper) {
+      gradleVersion = 2.13
+}
+
+
+def irisJar = file('lib/iris-0.60.jar')
+def irisParserJar = file('lib/iris-parser-0.60.jar')
+
+dependencies {
+  compile files(irisJar, irisParserJar)
+}
+
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.11'
+}
