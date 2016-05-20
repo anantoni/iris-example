@@ -1,7 +1,7 @@
 JAVAC=javac
 JVM=java
-CLASSPATH = lib/iris-0.60.jar:lib/iris-parser-0.60.jar:src/
-sources = $(wildcard src/iris/*.java)
+CLASSPATH = lib/iris-0.60.jar:lib/iris-parser-0.60.jar:src/main/java
+sources = $(wildcard src/main/java/iris/*.java)
 classes = $(sources:.java=.class)
 
 all: compile
