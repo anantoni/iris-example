@@ -90,7 +90,7 @@ public class Main {
             List<IVariable> variableBindings = new ArrayList<>();
             IRelation relation = knowledgeBase.execute(query, variableBindings);
 
-            // Output the variables.
+            // Output the variable bindings.
             System.out.println("\n" + query.toString() + "\n" + variableBindings);
 
             // Output each tuple in the relation, where the term at position i

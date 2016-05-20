@@ -5,4 +5,4 @@
 
 ?- predecessor(?x, ?y).
 
-?- singleChild(?x).
+?- single_child(?x).
