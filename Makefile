@@ -22,3 +22,6 @@ run-graph:
 
 run-spiglet-factorial:
 	$(JVM) -cp $(CLASSPATH) iris.Main datalog-examples/spiglet/factorial
+
+run-another-graph:
+	$(JVM) -cp $(CLASSPATH) iris.Main datalog-examples/another-graph

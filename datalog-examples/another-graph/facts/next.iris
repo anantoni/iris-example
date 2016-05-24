@@ -1,0 +1,14 @@
+next('root', 'a').
+next('root', 'b').
+next('a', 'c').
+next('b', 'd').
+next('b', 'e').
+next('e', 'f').
+next('d', 'g').
+next('exception1', 'f').
+next('exception1', 'exception2').
+next('c', 'h').
+next('h', 'r1').
+next('g', 'r2').
+next('f', 'r1').
+next('f', 'r2').

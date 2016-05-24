@@ -1,0 +1,2 @@
+returnInstruction('r1').
+returnInstruction('r2').

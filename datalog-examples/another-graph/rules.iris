@@ -1,0 +1,34 @@
+reachable(?x, ?y) :- next(?x, ?y).
+reachable(?x, ?y) :- reachable(?z, ?y),
+                     reachable(?x, ?z).
+
+//ReachableBypassing(i,j,k) -> Instruction(i), Instruction(j), Instruction(k).
+reachableBypassing(?i, ?j, ?k) :- next(?i, ?j),
+                                  instruction(?k),
+                                  ?i != ?k,
+                                  ?j != ?k.
+
+reachableBypassing(?i, ?j, ?k) :- reachableBypassing(?i, ?l, ?k),
+                                  next(?l, ?j),
+                                  ?k != ?j.
+
+reachableFromEntry(?j) :- reachable(?i, ?j),
+                          entry(?i).
+
+canReachReturn(?i) :- reachable(?i, ?j),
+                      returnInstruction(?j).
+
+// CannotReachReturn(i,j) <- ReturnInstruction(j), Instruction(i), !Reachable(i,j).
+// CannotReachAllReturns(i) <- CannotReachReturn(i, _).
+cannotReachAllReturns(?i) :- returnInstruction(?j),
+                            instruction(?i),
+                            !reachable(?i, ?j).
+
+canReachAllReturns(?i) :- instruction(?i),
+                          !cannotReachAllReturns(?i).
+
+predecessorNotReachableFromEntry(?i) :- next(?j, ?i),
+                                        !reachableFromEntry(?j).
+
+allPredecessorsReachableFromEntry(?i) :- instruction(?i),
+                                         !predecessorNotReachableFromEntry(?i).

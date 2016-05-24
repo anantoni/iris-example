@@ -1,0 +1,6 @@
+?- reachableBypassing(?i, ?j, ?k).
+?- reachableFromEntry(?j).
+?- canReachReturn(?i).
+?- canReachAllReturns(?i).
+?- predecessorNotReachableFromEntry(?i).
+?- allPredecessorsReachableFromEntry(?i).

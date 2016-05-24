@@ -1,0 +1,13 @@
+instruction('root').
+instruction('a').
+instruction('b').
+instruction('c').
+instruction('d').
+instruction('e').
+instruction('f').
+instruction('g').
+instruction('h').
+instruction('exception1').
+instruction('exception2').
+instruction('r1').
+instruction('r2').
